@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+
+<style>
+  body{ 
+          
+		  color:#f2f2f2;
+		 
+		 background: #222222;
+
+		 }
+	  
+   #titulo{
+      font-size:50px;
+   }	  
+	  
+  #bot_azul{
+      background:#66ccff;
+	  color:#004466;
+	  padding:6px;
+	  font-size:20px;
+	  border-radius:3px;
+	  cursor:pointer;
+	  border-top: 4px solid #333;
+  } 
+  
+  #bot_vermelho{
+      background:#ff3333;
+      color:#800000;
+	  padding:6px;
+	  font-size:20px;
+	  border-radius:3px;
+	  cursor:pointer;
+	  border-top: 4px solid #333;
+  }
+  
+  #bot_cinza{
+      background:#cccccc;
+      color:#555555;
+	  padding:6px;
+	  font-size:20px;
+	  border-radius:3px;
+	  cursor:pointer;
+	  border-top: 4px solid #333;
+  }
+  
+  .bot_numeros{
+     background:#f2f2f2;
+     color:#222222;
+	 padding:3px 10px;
+	 font-size:20px;
+	 border-radius:3px;
+	 cursor:pointer;
+	 border-top: 4px solid #333;
+	 
+  }
+  
+  #campo_cronometro{
+     font-size:50px;
+  }
+   
+	  
+</style>
+
+<script>
+ 
+  var hor = 0;
+  var min = 0;  
+  
+ function formatatempo(segs) {
+if (segs < 10) {segs = +segs}
+fin = +segs;
+
+return fin;
+}
+var segundos = 0; //inicio do cronometro
+
+function conta() {
+
+ if(segundos >= 60){
+     segundos = 0;
+     min = min + 1;
+	 document.getElementById("E_min").innerHTML = formatatempo(min);
+ }
+ 
+ if(min > 60){
+     hor = hor + 1;
+	 min = 0;	 
+ }
+ 
+ 
+ 
+
+segundos++;
+
+if(segundos < 10){document.getElementById("E_seg").innerHTML = "0" + formatatempo(segundos);}
+else{document.getElementById("E_seg").innerHTML = formatatempo(segundos);}
+
+if(min < 10){document.getElementById("E_min").innerHTML = "0" + formatatempo(min);}
+else{document.getElementById("E_min").innerHTML = formatatempo(min);}
+
+if(min < 10){document.getElementById("E_hor").innerHTML = "0" + formatatempo(hor);}
+else{document.getElementById("E_hor").innerHTML = formatatempo(hor);}
+
+}
+
+interval = setInterval("conta();",1000);
+
+</script>
+
+</head>
+
+<body>
+  
+  <b id="titulo">Cronômetro </b><br><br>
+  <div id="campo_cronometro">
+  <b id="E_hor">00</b> : <b id="E_min">00</b> : <b id="E_seg">00</b>
+  </div>
+  <br>
+  <b id="bot_azul">Play</b>
+  <b id="bot_vermelho">Pause</b>
+  <b id="bot_cinza">Clear</b>
+  <p>
+  <b class="bot_numeros">0</b>
+  <b class="bot_numeros">1</b>
+  <b class="bot_numeros">2</b>
+  <b class="bot_numeros">3</b>
+  <b class="bot_numeros">4</b>
+  <b class="bot_numeros">5</b>
+  <b class="bot_numeros">6</b>
+  <b class="bot_numeros">7</b>
+  <b class="bot_numeros">8</b>
+  <b class="bot_numeros">9</b>
+  
+</body>
+
+</html>
